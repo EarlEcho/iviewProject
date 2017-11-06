@@ -29,6 +29,7 @@
                         </FormItem>
                         <FormItem prop="verfiyCode">
                             <Input type="text" v-model="submitSignForm.verfiyCode" placeholder="验证码">
+                                <ls-msg-send-btn></ls-msg-send-btn>
                             </Input>
                         </FormItem>
                         <FormItem prop="pwd">
@@ -48,10 +49,10 @@
 </template>
 <script>
     import {Tabs, TabPane, Form, FormItem, Input, Button} from 'iview';
+    import LsMsgSendBtn from '@/components/MsgSendBtn'
 
     export default {
-        name: 'HelloWorld',
-        components: {Tabs, TabPane, Form, FormItem, Input, Button},
+        components: {Tabs, TabPane, Form, FormItem, Input, Button, LsMsgSendBtn},
         data() {
             return {
                 submitLoginForm: {
@@ -99,6 +100,9 @@
                         this.$Message.error('表单验证失败!');
                     }
                 })
+            },
+            fetchSmsCode: function () {
+
             }
         }
     }
