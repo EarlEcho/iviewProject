@@ -1,0 +1,13 @@
+/*公共样式*/
+.ivu-input {
+    height: 38px !important;
+    /*font-weight: bold;*/
+    font-size: 13px !important;
+}
+.ivu-input-group-prepend{
+    font-size: 18px !important;
+    padding: 4px 9px !important;
+}
+button{
+    font-size: 14px !important;
+}

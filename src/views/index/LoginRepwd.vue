@@ -39,6 +39,7 @@
                             <Button type="primary" @click="handleSubmit('submitSignForm')">立即注册</Button>
                         </FormItem>
                     </Form>
+
                 </TabPane>
             </Tabs>
         </div>
