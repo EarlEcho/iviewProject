@@ -12,6 +12,9 @@
                             <iInput type="password" v-model="submitLoginForm.pwd" placeholder="密码"></iInput>
                         </FormItem>
                         <FormItem>
+                            <ls-submit-btn submit-url="/" submit-method="post" :submit-data="submitLoginForm"
+                                           :before-submit="beforeSubmitLogin" submit-form-ref="submitLoginForm"
+                                           btn-text="登录"></ls-submit-btn>
                             <iButton type="primary" @click="handleSubmit('submitLoginForm')">登录</iButton>
                         </FormItem>
                         <div class="other-action">
@@ -29,14 +32,17 @@
                         </FormItem>
                         <FormItem prop="verfiyCode">
                             <iInput type="text" v-model="submitSignForm.verfiyCode" placeholder="验证码">
+                                <ls-msg-send-btn></ls-msg-send-btn>
                             </iInput>
-                            <ls-msg-send-btn></ls-msg-send-btn>
                         </FormItem>
                         <FormItem prop="pwd">
                             <iInput type="password" v-model="submitSignForm.pwd" placeholder="密码"></iInput>
                         </FormItem>
                         <FormItem>
-                            <iButton type="primary" @click="handleSubmit('submitSignForm')">立即注册</iButton>
+                            <ls-submit-btn submit-url="/" submit-method="post" :submit-data="submitSignForm"
+                                           :before-submit="beforeSubmitLogin" submit-form-ref="submitSignForm"
+                                           btn-text="立即注册"></ls-submit-btn>
+                            <!--<iButton type="primary" @click="handleSubmit('submitSignForm')">立即注册</iButton>-->
                         </FormItem>
                     </iForm>
                 </TabPane>
@@ -50,6 +56,7 @@
 <script>
     import {Tabs, TabPane, FormItem, Form, Input, Button} from 'iview';
     import LsMsgSendBtn from '@/components/MsgSendBtn'
+    import LsSubmitBtn from '@/components/SubmitBtn'
 
     /*会与原生HTML标签冲突的组件*/
     import iButton from 'iview/src/components/Button';
@@ -59,7 +66,7 @@
 
     export default {
         components: {
-            Tabs, TabPane, FormItem, LsMsgSendBtn, iForm, iInput, iButton
+            Tabs, TabPane, FormItem, LsMsgSendBtn, LsSubmitBtn, iForm, iInput, iButton
         },
         data() {
             return {
@@ -113,6 +120,9 @@
             ,
             fetchSmsCode: function () {
 
+            },
+            beforeSubmitLogin: function () {
+
             }
         }
     }
@@ -157,7 +167,9 @@
         }
         .login-form-box, .sign-form-box {
             padding: 20px 15px 20px 15px;
-            .ivu-btn-primary {
+
+            .ivu-btn-primary,
+            .ls-submit-btn {
                 width: 100%;
             }
         }
