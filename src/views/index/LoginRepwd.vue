@@ -3,43 +3,42 @@
         <div class="login-sign-box">
             <Tabs value="login">
                 <TabPane label="登录" name="login">
-                    <Form ref="submitLoginForm" :model="submitLoginForm" :rules="submitLoginRule"
-                          class="login-form-box">
+                    <iForm ref="submitLoginForm" :model="submitLoginForm" :rules="submitLoginRule"
+                           class="login-form-box">
                         <FormItem prop="userName">
-                            <Input type="text" v-model="submitLoginForm.userName" placeholder="用户名"></Input>
+                            <iInput type="text" v-model="submitLoginForm.userName" placeholder="用户名"></iInput>
                         </FormItem>
                         <FormItem prop="pwd">
-                            <Input type="password" v-model="submitLoginForm.pwd" placeholder="密码"></Input>
+                            <iInput type="password" v-model="submitLoginForm.pwd" placeholder="密码"></iInput>
                         </FormItem>
                         <FormItem>
-                            <Button type="primary" @click="handleSubmit('submitLoginForm')">登录</Button>
+                            <iButton type="primary" @click="handleSubmit('submitLoginForm')">登录</iButton>
                         </FormItem>
                         <div class="other-action">
                             <router-link to="/find-pwd">忘记密码</router-link>
                         </div>
-                    </Form>
+                    </iForm>
                 </TabPane>
                 <TabPane label="注册" name="siginIn">
-                    <Form ref="submitSignForm" :model="submitSignForm" :rules="submitSignRule" class="sign-form-box">
+                    <iForm ref="submitSignForm" :model="submitSignForm" :rules="submitSignRule" class="sign-form-box">
                         <FormItem prop="userName">
-                            <Input type="text" v-model="submitSignForm.userName" placeholder="用户名"></Input>
+                            <iInput type="text" v-model="submitSignForm.userName" placeholder="用户名"></iInput>
                         </FormItem>
                         <FormItem prop="mobile">
-                            <Input type="text" v-model="submitSignForm.mobile" placeholder="手机号"></Input>
+                            <iInput type="text" v-model="submitSignForm.mobile" placeholder="手机号"></iInput>
                         </FormItem>
                         <FormItem prop="verfiyCode">
-                            <Input type="text" v-model="submitSignForm.verfiyCode" placeholder="验证码">
-                                <ls-msg-send-btn></ls-msg-send-btn>
-                            </Input>
+                            <iInput type="text" v-model="submitSignForm.verfiyCode" placeholder="验证码">
+                            </iInput>
+                            <ls-msg-send-btn></ls-msg-send-btn>
                         </FormItem>
                         <FormItem prop="pwd">
-                            <Input type="password" v-model="submitSignForm.pwd" placeholder="密码"></Input>
+                            <iInput type="password" v-model="submitSignForm.pwd" placeholder="密码"></iInput>
                         </FormItem>
                         <FormItem>
-                            <Button type="primary" @click="handleSubmit('submitSignForm')">立即注册</Button>
+                            <iButton type="primary" @click="handleSubmit('submitSignForm')">立即注册</iButton>
                         </FormItem>
-                    </Form>
-
+                    </iForm>
                 </TabPane>
             </Tabs>
         </div>
@@ -49,11 +48,19 @@
     </div>
 </template>
 <script>
-    import {Tabs, TabPane, Form, FormItem, Input, Button} from 'iview';
+    import {Tabs, TabPane, FormItem, Form, Input, Button} from 'iview';
     import LsMsgSendBtn from '@/components/MsgSendBtn'
 
+    /*会与原生HTML标签冲突的组件*/
+    import iButton from 'iview/src/components/Button';
+    import iForm from 'iview/src/components/Form';
+    import iInput from 'iview/src/components/Input';
+
+
     export default {
-        components: {Tabs, TabPane, Form, FormItem, Input, Button, LsMsgSendBtn},
+        components: {
+            Tabs, TabPane, FormItem, LsMsgSendBtn, iForm, iInput, iButton
+        },
         data() {
             return {
                 submitLoginForm: {
@@ -91,7 +98,8 @@
                     ]
                 }
             }
-        },
+        }
+        ,
         methods: {
             handleSubmit(name) {
                 this.$refs[name].validate((valid) => {
@@ -101,7 +109,8 @@
                         this.$Message.error('表单验证失败!');
                     }
                 })
-            },
+            }
+            ,
             fetchSmsCode: function () {
 
             }

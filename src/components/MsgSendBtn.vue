@@ -1,13 +1,13 @@
 <template>
     <div class="ls-msg-send-btn" slot="append">
-        <Button  @click="fetchSmsCode">获取验证码</Button>
+        <iButton @click="fetchSmsCode">获取验证码</iButton>
     </div>
 </template>
 
 <script>
-    import {Button} from 'iview'
+    import iButton from 'iview/src/components/Button'
     export default {
-        components: {Button},
+        components: {iButton},
         name: 'ls-msg-send-btn',
         props: [],
         data() {
