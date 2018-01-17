@@ -32,8 +32,8 @@
                         </FormItem>
                         <FormItem prop="verfiyCode">
                             <iInput type="text" v-model="submitSignForm.verfiyCode" placeholder="验证码">
-                                <ls-msg-send-btn></ls-msg-send-btn>
                             </iInput>
+                            <ls-msg-send-btn></ls-msg-send-btn>
                         </FormItem>
                         <FormItem prop="pwd">
                             <iInput type="password" v-model="submitSignForm.pwd" placeholder="密码"></iInput>
